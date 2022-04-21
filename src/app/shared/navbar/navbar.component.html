@@ -1,15 +1,13 @@
 <nav id="navbar-main"
-  class="navbar navbar-main navbar-expand-lg navbar-transparent headroom headroom--top headroom--pinned">
-  <div class="container">
-    <a class="navbar-brand mr-lg-5" [routerLink]="['/landing']">
-      <img src="./assets/img/brand/logo_white.svg" width="30" height="30"> OpenChia.io
-    </a>
+  class="navbar navbar-main navbar-expand-lg navbar-transparent headroom headroom--top headroom--pinned bg-white">
+  <div class="container navban-container">
+
     <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed"
       [attr.aria-expanded]="!isCollapsed" aria-controls="navbar_global">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="navbar-collapse collapse" id="navbar_global" [ngbCollapse]="isCollapsed">
-      <div class="navbar-collapse-header">
+    <div class="navbar-collapse collapse bg-white" id="navbar_global" [ngbCollapse]="isCollapsed">
+      <div class="navbar-collapse-header bg-white">
         <div class="row">
           <div class="col-12 collapse-close">
             <button type="button" class="navbar-toggler" (click)="isCollapsed = !isCollapsed"
@@ -20,152 +18,62 @@
           </div>
         </div>
       </div>
-      <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+      <div class="navbar-img-container">
+        <a class="navbar-brand-link" [routerLink]="['/landing']">
+          <img src="./assets/img/brand/logo-joseando.png" class="navbar-img">
+          <span class="navbar-name">Pool-joseando.net</span>
+        </a>
+      </div>
+      <ul class="navbar-options navbar-nav navbar-nav-hover align-items-lg-center">
         <li class="nav-item">
           <a class="nav-link" role="button" [routerLink]="['/explorer']">
             <i class="ni ni-ui-04 d-lg-none"></i>
-            <span class="nav-link-inner" i18n="@@Explorer">Explorer</span>
+            <span class="nav-link-inner" i18n="@@Explorer">Pool</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" role="button" [routerLink]="['/explorer']">
+            <i class="ni ni-ui-04 d-lg-none"></i>
+            <span class="nav-link-inner" i18n="@@Explorer">Parciales</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" role="button" [routerLink]="['/explorer']">
+            <i class="ni ni-ui-04 d-lg-none"></i>
+            <span class="nav-link-inner" i18n="@@Explorer">Tu espacio</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" role="button" [routerLink]="['/explorer']">
+            <i class="ni ni-ui-04 d-lg-none"></i>
+            <span class="nav-link-inner" i18n="@@Explorer">Tus bloques</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" role="button" [routerLink]="['/explorer']">
+            <i class="ni ni-ui-04 d-lg-none"></i>
+            <span class="nav-link-inner" i18n="@@Explorer">Pagos</span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" role="button" [routerLink]="['/fees']">
-            <span class="nav-link-inner--text" i18n="@@Fees">Fees</span>
+            <span class="nav-link-inner--text" i18n="@@Fees">Ganancias</span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" role="button" [routerLink]="['/stats']">
             <i class="ni ni-ui-04 d-lg-none"></i>
-            <span class="nav-link-inner--text" i18n="@@Stats">Stats</span>
+            <span class="nav-link-inner--text" i18n="@@Stats">Harvesters</span>
           </a>
         </li>
-        <li ngbDropdown class="nav-item dropdown">
-          <a ngbDropdownToggle class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false" id="moreDropdown" role="button">
-            <i class="ni ni-collection d-lg-none"></i>
-            <span class="nav-link-inner" i18n="@@More">More</span>
-          </a>
-          <div class="dropdown-menu" aria-labelledby="moreDropdown" ngbDropdownMenu>
-            <a ngbDropdownItem class="dropdown-item" role="button" [routerLink]="['/calculator']">
-              <i class="ni ni-ui-04 d-lg-none"></i>
-              <span class="nav-link-inner text-primary" i18n="@@Calculator">Calculator</span>
-            </a>
-            <a ngbDropdownItem class="dropdown-item" role="button" [routerLink]="['/referral']">
-              <i class="ni ni-ui-04 d-lg-none"></i>
-              <span class="nav-link-inner text-primary" i18n="@@Referral">Referral</span>
-            </a>
-            <a ngbDropdownItem class="dropdown-item" role="button" href="/api/doc/" target="_blank">
-              <i class="ni ni-ui-04 d-lg-none"></i>
-              <span class="nav-link-inner text-primary" i18n="@@API">API</span>
-            </a>
-          </div>
-        </li>
+
       </ul>
       <ul class="navbar-nav navbar-nav-hover align-items-lg-center ml-lg-auto">
-        <li *ngIf="blockchain_duststorm" class="nav-item">
-          <ng-template #duststormTooltip>
-            <span i18n>
-              Dust storm currently affecting the blockchain. Payouts may be delayed.
-            </span>
-          </ng-template>
-          <a class="nav-link nav-link-icon">
-            <i class="fa-solid fa-triangle-exclamation fa-triangle-duststorm"
-              [ngbTooltip]="duststormTooltip" placement="left auto"></i>
-            <span class="nav-link-inner--text d-lg-none" i18n="@@DustStorm">Dust Storm</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link nav-link-icon" (click)="darkModeToggle()" href="javascript:void(0);" data-toggle="tooltip"
-            title="Toggle Dark Mode"><i #darkModeIcon class="fa-solid fa-moon"></i>
-            <span class="nav-link-inner--text d-lg-none" i18n="@@DarkMode">Dark Mode</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link nav-link-icon" href="https://www.youtube.com/channel/UCL70j_KiPd49rfp_UEqxiyQ"
-            target="_blank" data-toggle="tooltip" title="Watch us">
-            <i class="fab fa-youtube"></i>
-            <span class="nav-link-inner--text d-lg-none">YouTube</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link nav-link-icon" href="https://discord.gg/2URS9H7RZn" target="_blank" data-toggle="tooltip"
-            title="Chat with us">
-            <i class="fab fa-discord"></i>
-            <span class="nav-link-inner--text d-lg-none">Discord</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link nav-link-icon" href="https://github.com/openchia/web" target="_blank" data-toggle="tooltip"
-            title="Star us on Github">
-            <i class="fab fa-github"></i>
-            <span class="nav-link-inner--text d-lg-none">Github</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link nav-link-icon" href="https://twitter.com/openchia" target="_blank" data-toggle="tooltip"
-            title="Follow on Twitter">
-            <i class="fab fa-twitter"></i>
-            <span class="nav-link-inner--text d-lg-none">Twitter</span>
-          </a>
-        </li>
+
         <li class="nav-item d-none d-lg-block ml-lg-4">
-          <a class="btn btn-neutral btn-icon" [routerLink]="['/join']">
-            <span class="nav-link-inner--text" i18n="@@JoinPool">Join our pool</span>
+          <a class="login-btn btn btn-neutral btn-icon" [routerLink]="['/join']">
+            <span class="nav-link-inner--text-login" i18n="@@JoinPool">Entrar</span>
           </a>
-        </li>
-        <li ngbDropdown class="nav-item dropdown">
-          <a ngbDropdownToggle class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false" id="languageDropdown" role="button">
-            <i class="ni ni-collection d-lg-none"></i>
-            <span class="nav-link-inner--text">
-              <span class="nav-link-inner--text">{{ locale | uppercase }}</span>
-            </span>
-          </a>
-          <div class="dropdown-menu" aria-labelledby="languageDropdown" ngbDropdownMenu>
-            <a ngbDropdownItem href="/cs/" class="dropdown-item text-primary">
-              <img src="./assets/img/flags/cs.png" class="mr-2 flags" />
-              Čeština
-            </a>
-            <a ngbDropdownItem href="/de/" class="dropdown-item text-primary">
-              <img src="./assets/img/flags/de.png" class="mr-2 flags" />
-              Deutsch
-            </a>
-            <a ngbDropdownItem href="/en/" class="dropdown-item text-primary">
-              <img src="./assets/img/flags/en.png" class="mr-2 flags" />
-              English
-            </a>
-            <a ngbDropdownItem href="/es/" class="dropdown-item text-primary">
-              <img src="./assets/img/flags/es.png" class="mr-2 flags" />
-              Español
-            </a>
-            <a ngbDropdownItem href="/fr/" class="dropdown-item text-primary">
-              <img src="./assets/img/flags/fr.png" class="mr-2 flags" />
-              Français
-            </a>
-            <a ngbDropdownItem href="/hu/" class="dropdown-item text-primary">
-              <img src="./assets/img/flags/hu.png" class="mr-2 flags" />
-              Magyar
-            </a>
-            <a ngbDropdownItem href="/pl/" class="dropdown-item text-primary">
-              <img src="./assets/img/flags/pl.png" class="mr-2 flags" />
-              Polski
-            </a>
-            <a ngbDropdownItem href="/pt/" class="dropdown-item text-primary">
-              <img src="./assets/img/flags/pt.png" class="mr-2 flags" />
-              Português
-            </a>
-            <a ngbDropdownItem href="/ru/" class="dropdown-item text-primary">
-              <img src="./assets/img/flags/ru.png" class="mr-2 flags" />
-              Pусский
-            </a>
-            <a ngbDropdownItem href="/sk/" class="dropdown-item text-primary">
-              <img src="./assets/img/flags/sk.png" class="mr-2 flags" />
-              Slovenčina
-            </a>
-            <a ngbDropdownItem href="/zh-CN/" class="dropdown-item text-primary">
-              <img src="./assets/img/flags/zh-CN.png" class="mr-2 flags" />
-              简体中文
-            </a>
-          </div>
         </li>
       </ul>
     </div>

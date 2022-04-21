@@ -5,3 +5,67 @@
 .fa-triangle-duststorm {
     color: #ffd700;
 }
+
+.navban-container {
+    height: 100px;
+}
+.navbar-brand {
+    background-color: blue;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.navbar-img {
+    object-fit:cover;
+    height: 100px;
+    width: 120px;
+}
+.navbar-img-container {
+    height: 100%;
+}
+.navbar-options {
+    margin-left: 5vw;
+    border-radius: 50px;
+    background-color: white;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    padding: 8px;
+}
+.nav-link-inner, .nav-link-inner--text {
+    color: rgb(83, 83, 83);
+}
+
+.nav-link-inner--text-login{
+    color:white
+}
+.navbar-toggler-icon {
+    background-color: black;
+    border-radius: 5px;
+}
+.nav-item:hover {
+    background-color: hsl(136, 49%, 89%);
+}
+
+.login-btn {
+    background-color: #1fa441;
+}
+.login-btn:hover {
+    background-color: hsl(135, 75%, 65%);
+}
+.nav-link-inner:hover {
+    text-decoration: underline;
+    text-decoration-color: #1fa441;
+}
+
+@media only screen and (max-width: 991px) {
+    .navbar-options {
+        background-color: white;
+        border-radius: 0px;
+    }
+}
+@media only screen and (max-width: 1220px) {
+    .navbar-brand-link {
+        display: flex;
+        flex-direction: column;
+    }
+}
