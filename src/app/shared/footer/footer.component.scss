@@ -1,0 +1,27 @@
+.footer-description {
+    color:black
+}
+.text-uppercase {
+    font-weight: bold;
+}
+
+.footer-img-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.footer-img {
+    width: 250px;
+    height: 140px;
+}
+
+.text-white-footer {
+    color:black;
+}
+
+@media only screen and (max-width: 992px) {
+    .footer-img-container {
+        display: none;
+    }
+}

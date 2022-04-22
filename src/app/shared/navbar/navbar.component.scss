@@ -52,7 +52,7 @@
 .login-btn:hover {
     background-color: hsl(135, 75%, 65%);
 }
-.nav-link-inner:hover {
+.nav-link-inner:hover, .nav-link-inner--text:hover {
     text-decoration: underline;
     text-decoration-color: #1fa441;
 }
