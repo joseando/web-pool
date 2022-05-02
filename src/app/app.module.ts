@@ -24,6 +24,7 @@ import { PartnersComponent } from './partners/partners.component';
 import { ReferralComponent } from './referral/referral.component';
 import { GiveawayComponent } from './giveaway/giveaway.component';
 import { CalculatorComponent } from './calculator/calculator.component';
+import { PartialsComponent } from './partials/partials.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { CalculatorComponent } from './calculator/calculator.component';
     ReferralComponent,
     GiveawayComponent,
     CalculatorComponent,
+    PartialsComponent,
   ],
   imports: [
     BrowserModule,

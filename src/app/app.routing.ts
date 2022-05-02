@@ -14,21 +14,25 @@ import { ReferralComponent } from './referral/referral.component'
 import { TermsComponent } from './terms/terms.component';
 import { CalculatorComponent } from './calculator/calculator.component';
 import { PagenotfoundComponent } from './errors/pagenotfound/pagenotfound.component';
+import { PartialsComponent } from './partials/partials.component'
 
 const routes: Routes = [
+  { path: '', component: LandingComponent },
+
   { path: 'join', component: JoinComponent },
   { path: 'faq', component: FaqComponent },
   { path: 'stats', component: StatsComponent },
   { path: 'fees', component: FeesComponent },
   { path: 'giveaway', component: GiveawayComponent },
-  { path: 'landing', component: LandingComponent },
   { path: 'partners', component: PartnersComponent },
   { path: 'referral', component: ReferralComponent },
   { path: 'terms', component: TermsComponent },
   { path: 'calculator', component: CalculatorComponent },
   { path: '404', component: PagenotfoundComponent },
+  { path: 'partials', component: PartialsComponent },
+
   //{ path: '**', redirectTo: '404', pathMatch: 'full'},
-  { path: '', redirectTo: 'landing', pathMatch: 'full' }
+  // { path: '', redirectTo: 'landing', pathMatch: 'full' }
 ];
 
 @NgModule({
