@@ -89,7 +89,9 @@
               "buildOptimizer": true
             },
             "pt": {
-              "localize": ["pt"]
+              "localize": [
+                "pt"
+              ]
             }
           }
         },
@@ -97,7 +99,9 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "openchia:build",
-            "proxyConfig": "src/proxy.conf.json"
+            "proxyConfig": "src/proxy.conf.json",
+            "host": "0.0.0.0",
+            "port": 443
           },
           "configurations": {
             "production": {
