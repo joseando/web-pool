@@ -25,6 +25,7 @@ import { ReferralComponent } from './referral/referral.component';
 import { GiveawayComponent } from './giveaway/giveaway.component';
 import { CalculatorComponent } from './calculator/calculator.component';
 import { PartialsComponent } from './partials/partials.component';
+import { NgxFilesizeModule } from 'ngx-filesize';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { PartialsComponent } from './partials/partials.component';
     NgxChartsModule,
     BrowserAnimationsModule,
     ClipboardModule,
+    NgxFilesizeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
