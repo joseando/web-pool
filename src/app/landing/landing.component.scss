@@ -1,9 +1,34 @@
 main {
     padding-top: 110px;
 }
+
+.input-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.input-container {
+    margin-top: 20px;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-container button {
+    width: 100%;
+}
+
+.title-login {
+    font-weight: bolder;
+}
+
 .header-container {
     display: none;
 }
+
 .cards-section {
     display: none;
     margin-top: 100px;
@@ -12,7 +37,7 @@ main {
 .join-main-container {
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap; 
+    flex-wrap: nowrap;
     justify-content: center;
 }
 
@@ -29,24 +54,29 @@ main {
     justify-content: center;
     align-items: center;
 }
+
 .pool-urls {
     display: flex;
     flex-direction: column;
-    align-items:center ;
+    align-items: center;
 }
+
 .pool-urls-title {
     font-weight: bold;
     text-decoration: underline;
 }
+
 .landing-about-img {
     width: 300px;
     height: 250px;
     object-fit: contain;
 }
+
 .card-landing {
     display: flex;
     justify-content: center;
 }
+
 @media only screen and (max-width: 690px) {
     .join-main-container-inner {
         display: flex;

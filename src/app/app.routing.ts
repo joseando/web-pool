@@ -18,6 +18,7 @@ import { PartialsComponent } from './partials/partials.component'
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
+  { path: 'partials', component: PartialsComponent },
 
   { path: 'join', component: JoinComponent },
   { path: 'faq', component: FaqComponent },
@@ -29,7 +30,6 @@ const routes: Routes = [
   { path: 'terms', component: TermsComponent },
   { path: 'calculator', component: CalculatorComponent },
   { path: '404', component: PagenotfoundComponent },
-  { path: 'partials', component: PartialsComponent },
 
   //{ path: '**', redirectTo: '404', pathMatch: 'full'},
   // { path: '', redirectTo: 'landing', pathMatch: 'full' }
