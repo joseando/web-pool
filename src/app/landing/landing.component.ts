@@ -13,7 +13,7 @@ export class LandingComponent implements OnInit, OnDestroy {
 
   @ViewChild('searchinput') searchInput: ElementRef;
 
-  isUserAuthenticated: boolean = false
+  isUserAuthenticated = this.authSvc.isUserAuth()
   authtSubscription: Subscription
 
   searchNotFound: boolean = false;

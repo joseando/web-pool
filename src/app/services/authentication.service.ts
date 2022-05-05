@@ -8,6 +8,12 @@ export class AuthenticationService {
 
   private isUserAuthenticated = new Subject<boolean>()
 
+  isUserAuth() {
+    if (localStorage.getItem('test')) {
+      return true
+    }
+    return false
+  }
 
   getAuthentication() {
     return this.isUserAuthenticated.asObservable()
