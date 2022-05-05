@@ -29,7 +29,7 @@ const routes: Routes = [
   { path: 'blocks', component: BlocksComponent, canActivate: [AuthenticationGuard] },
   { path: 'payments', component: PaymentsComponent, canActivate: [AuthenticationGuard] },
   { path: 'rewards', component: RewardsComponent, canActivate: [AuthenticationGuard] },
-  { path: 'harvesters', component: HarvestersComponent, canActivate: [AuthenticationGuard] },
+  // { path: 'harvesters', component: HarvestersComponent, canActivate: [AuthenticationGuard] },
 
   // { path: 'join', component: JoinComponent },
   // { path: 'faq', component: FaqComponent },

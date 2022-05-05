@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-harvesters',
@@ -7,9 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HarvestersComponent implements OnInit {
 
-  constructor() { }
-
   ngOnInit(): void {
-  }
 
+  }
 }
