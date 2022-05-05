@@ -1,6 +1,6 @@
 <main>
   <section class="input-section">
-    <div class="input-container">
+    <div *ngIf="!isUserAuthenticated" class="input-container">
       <h1 class="title-login">Inicia sesión</h1>
       <input #searchinput type="text" placeholder="Introduce tu Launcher ID..." class="form-control"
         (keydown.enter)="searchFarmer()" />

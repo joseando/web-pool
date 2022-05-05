@@ -70,9 +70,9 @@
       </ul>
 
       <ul class="navbar-nav navbar-nav-hover align-items-lg-center ml-lg-auto">
-        <li class="nav-item d-none d-lg-block ml-lg-4" *ngIf="isNavbarVisible">
+        <li class="nav-item d-none d-lg-block ml-lg-4" *ngIf="isNavbarVisible" (click)="onLogout()">
           <a class="login-btn btn btn-neutral btn-icon" [routerLink]="['/']">
-            <span class="nav-link-inner--text-login" i18n="@@JoinPool">Entrar</span>
+            <span class="nav-link-inner--text-login" i18n="@@JoinPool">Cerrar sesión</span>
           </a>
         </li>
       </ul>

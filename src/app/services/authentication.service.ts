@@ -14,6 +14,12 @@ export class AuthenticationService {
 
   changeAuthentication(value: boolean) {
     this.isUserAuthenticated.next(value)
+    if (value) {
+      localStorage.setItem('test', 'test')
+      return;
+    }
+    localStorage.removeItem('test')
   }
+
 
 }

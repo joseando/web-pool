@@ -13,6 +13,8 @@ export class LandingComponent implements OnInit, OnDestroy {
 
   @ViewChild('searchinput') searchInput: ElementRef;
 
+  isUserAuthenticated: boolean = false
+
   searchNotFound: boolean = false;
   farmersCollectionSize: number = 0;
   farmersPage: number = 1;
@@ -63,6 +65,8 @@ export class LandingComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
+    this.authSvc.getAuthentication().subscribe(value => { this.isUserAuthenticated = value })
+
     this.dataService.getStats().subscribe(data => {
       this.pool_space = data['pool_space'];
       this.estimate_win = this.secondsToHm(data['estimate_win'] * 60);
@@ -89,7 +93,6 @@ export class LandingComponent implements OnInit, OnDestroy {
   }
 
   searchFarmer() {
-    console.log('clicked')
     this.authSvc.changeAuthentication(true)
     this.searchNotFound = false;
     this.farmersPage = 1;
@@ -97,7 +100,11 @@ export class LandingComponent implements OnInit, OnDestroy {
       search: this.searchInput.nativeElement.value,
       limit: this.farmersPageSize,
       offset: (this.farmersPage - 1) * this.farmersPageSize
-    }).subscribe(res => console.log(res));
+    }).subscribe(res => {
+      if (res['results']) {
+
+      }
+    });
   }
 
   private secondsToHm(d: number) {

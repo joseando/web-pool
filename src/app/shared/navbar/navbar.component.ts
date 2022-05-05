@@ -30,6 +30,10 @@ export class NavbarComponent implements OnInit {
         @Inject(LOCALE_ID) public locale: string
     ) { }
 
+    onLogout() {
+        this.authSvc.changeAuthentication(false)
+    }
+
     ngOnInit() {
         this.authSvc.getAuthentication().subscribe(value => {
             this.isNavbarVisible = value
