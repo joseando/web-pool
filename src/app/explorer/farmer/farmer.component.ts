@@ -38,15 +38,15 @@ export class FarmerComponent implements OnInit {
   harvesterXTicks: any[] = [];
   perHarvesterData: Map<String, object> = new Map();
 
-  sizeYAxisLabel: string = $localize`Estimated Size`;
-  sizeXAxisLabel: string = $localize`Time`;
+  sizeYAxisLabel: string = $localize`Tamaño estimado`;
+  sizeXAxisLabel: string = $localize`Tiempo`;
   sizeLegend: boolean = true;
   sizeLegendTitle: string = '';
   sizeLegendPosition: string = 'below';
   sizeData: any[] = null;
 
-  rewardsYAxisLabel: string = $localize`Daily Amount`;
-  rewardsXAxisLabel: string = $localize`Day`;
+  rewardsYAxisLabel: string = $localize`Cantidad diaria`;
+  rewardsXAxisLabel: string = $localize`Dia`;
   rewardsData: any[] = null;
   rewardsChartColors = { domain: ['#006400'] };
 

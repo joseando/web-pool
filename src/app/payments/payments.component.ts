@@ -41,8 +41,8 @@ export class PaymentsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.refreshPayoutTxs();
     this.refreshPayouts();
+    this.refreshPayoutTxs();
     this.dataService.getLauncher(this.farmerid).subscribe(launcher => {
       this.farmer = launcher;
     });
@@ -65,8 +65,10 @@ export class PaymentsComponent implements OnInit {
   }
 
   private handlePayoutTxs(data) {
+    console.log(data['count'])
     this.payouttxsCollectionSize = data['count'];
     this._payouttxs$.next(data['results']);
+
   }
 
   private handlePayouts(data) {

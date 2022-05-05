@@ -1,6 +1,7 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { DataService } from '../data.service';
 import { Observable, Subject, Subscription } from 'rxjs';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-landing',
@@ -8,7 +9,7 @@ import { Observable, Subject, Subscription } from 'rxjs';
   styleUrls: ['./landing.component.scss']
 })
 
-export class LandingComponent implements OnInit {
+export class LandingComponent implements OnInit, OnDestroy {
 
   @ViewChild('searchinput') searchInput: ElementRef;
 
@@ -53,10 +54,11 @@ export class LandingComponent implements OnInit {
   payoutsPage: number = 1;
   payoutsPageSize: number = 10;
 
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataService, private authSvc: AuthenticationService) {
     this.blocks$ = this._blocks$.asObservable();
     this.launchers$ = this._launchers$.asObservable();
     this.payouts$ = this._payouts$.asObservable();
+
   }
 
   ngOnInit() {
@@ -87,6 +89,8 @@ export class LandingComponent implements OnInit {
   }
 
   searchFarmer() {
+    console.log('clicked')
+    this.authSvc.changeAuthentication(true)
     this.searchNotFound = false;
     this.farmersPage = 1;
     this.dataService.getLaunchers({
@@ -132,7 +136,7 @@ export class LandingComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    this.searchSubscription.unsubscribe();
+    // this.searchSubscription.unsubscribe();
   }
 
 }

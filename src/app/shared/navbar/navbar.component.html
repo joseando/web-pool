@@ -24,7 +24,7 @@
           <span class="navbar-name">Pool-joseando.net</span>
         </a>
       </div>
-      <ul class="navbar-options navbar-nav navbar-nav-hover align-items-lg-center">
+      <ul class="navbar-options navbar-nav navbar-nav-hover align-items-lg-center" *ngIf="isNavbarVisible">
         <li class="nav-item">
           <a class="nav-link" role="button" [routerLink]="['/']">
             <i class="ni ni-ui-04 d-lg-none"></i>
@@ -68,10 +68,10 @@
         </li>
 
       </ul>
-      <ul class="navbar-nav navbar-nav-hover align-items-lg-center ml-lg-auto">
 
-        <li class="nav-item d-none d-lg-block ml-lg-4">
-          <a class="login-btn btn btn-neutral btn-icon" [routerLink]="['/join']">
+      <ul class="navbar-nav navbar-nav-hover align-items-lg-center ml-lg-auto">
+        <li class="nav-item d-none d-lg-block ml-lg-4" *ngIf="isNavbarVisible">
+          <a class="login-btn btn btn-neutral btn-icon" [routerLink]="['/']">
             <span class="nav-link-inner--text-login" i18n="@@JoinPool">Entrar</span>
           </a>
         </li>

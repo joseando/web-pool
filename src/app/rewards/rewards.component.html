@@ -1,1 +1,99 @@
-<p>rewards works!</p>
+<main>
+    <section class="section section-sm pt-sm my-section">
+        <div class="container">
+
+            <div class="title-container">
+                <h1 class="title-container-text">
+                    Tus recompensas
+                </h1>
+            </div>
+            <ul ngbNav #nav="ngbNav" [(activeId)]="tabActive" class="nav-tabs navbar-inverse">
+
+                <li [ngbNavItem]="4" class="list-items">
+                    <div class="row justify-content-center table-container">
+                        <div class="col-lg-4">
+                            <br />
+                            <table class="table table-sm table-striped table-responsive-lg">
+                                <tbody>
+                                    <tr>
+                                        <th scope="col" i18n>Ultimas 24h</th>
+                                        <td>
+                                            {{ farmer?.rewards?.last_24h / 1000000000000 }} XCH
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col" i18n>Hoy</th>
+                                        <td>{{ farmer?.rewards?.today / 1000000000000 }} XCH</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col" i18n>Ayer</th>
+                                        <td>{{ farmer?.rewards?.yesterday / 1000000000000 }} XCH</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col" i18n>Ultimos 7 dias</th>
+                                        <td>{{ farmer?.rewards?.last_7d / 1000000000000 }} XCH</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col" i18n>Ultimos 30 dias</th>
+                                        <td>{{ farmer?.rewards?.last_30d / 1000000000000 }} XCH</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            * <span i18n>Las fechas de arriba vienen dadas en sistema horario UTC</span>
+                        </div>
+                        <div class="col-8 test " style="display: block;" #rewardsContainerRef>
+                            <ngx-charts-bar-vertical [view]="[rewardsContainerRef.offsetWidth, 280]"
+                                [showXAxisLabel]="false" [showYAxisLabel]="true" [xAxis]="false" [yAxis]="true"
+                                [xAxisLabel]="rewardsXAxisLabel" [yAxisLabel]="rewardsYAxisLabel"
+                                [scheme]="rewardsChartColors" [yAxisTickFormatting]="rewardsFormatAxisY"
+                                [results]="rewardsData" [gradient]="true" [legend]="false">
+
+                            </ngx-charts-bar-vertical>
+                        </div>
+
+                    </div>
+                    <br />
+                    <table class="table table-sm table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col" i18n="@@Date">Fecha</th>
+                                <th scope="col" i18n="@@Blocks">Bloques</th>
+                                <th scope="col" i18n="@@Amount">Cantidad</th>
+                                <th scope="col" i18n="@@Paid">Pagos</th>
+                                <th scope="col" i18n="@@RewardID">Recompensa ID</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngIf="(payoutaddrs$ | async) as payoutaddrs;">
+                            <tr *ngFor="let payoutaddr of payoutaddrs; let i = index">
+                                <td>{{ payoutaddr.payout.datetime | date:"medium" }}</td>
+                                <td><span *ngFor="let block of payoutaddr.payout.blocks">#{{ block.farmed_height}}
+                                    </span>
+                                </td>
+                                <td>{{ payoutaddr.amount / 1000000000000 }} XCH</td>
+                                <td>
+                                    <span *ngIf="payoutaddr.transaction && payoutaddr.transaction.confirmed_block_index"
+                                        i18n>Yes</span>
+                                    <span
+                                        *ngIf="payoutaddr.transaction && !payoutaddr.transaction.confirmed_block_index"
+                                        i18n>Confirming</span>
+                                    <span *ngIf="!payoutaddr.transaction" i18n>Pending</span>
+                                </td>
+                                <td><a [routerLink]="['/explorer/reward', payoutaddr.payout.id]">{{ payoutaddr.payout.id
+                                        }}</a>
+                                </td>
+                            </tr>
+                            <tr *ngIf="payoutaddrs.length == 0">
+                                <td colspan="7" i18n="@@NoRewards">No se han encontrado recompensas!</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="d-flex justify-content-between p-2">
+                        <ngb-pagination [collectionSize]="payoutsCollectionSize" [(page)]="payoutsPage"
+                            [pageSize]="payoutsPageSize" (pageChange)="refreshPayouts()">
+                        </ngb-pagination>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+</main>

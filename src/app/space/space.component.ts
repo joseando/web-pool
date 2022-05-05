@@ -37,7 +37,6 @@ export class SpaceComponent implements OnInit {
 
   getSize(launcher_id: string) {
     this.dataService.getLauncherSize(launcher_id).subscribe((r) => {
-      console.log('r', r)
       this.sizeData = [
         {
           "name": $localize`Size (24 hours average)`,
