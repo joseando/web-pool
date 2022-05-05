@@ -18,3 +18,43 @@ main {
     justify-content: center;
     align-items: center;
 }
+
+.box-title-text {
+    color: black !important;
+    font-weight: bold;
+}
+
+.title-text {
+    color: white !important;
+    font-weight: bolder;
+}
+
+.description-text {
+    color: #CFCFCF !important;
+    font-weight: bolder;
+}
+
+.login-button {
+    background-color: #ffd700;
+    color: black !important
+}
+
+.height-value {
+    color: #ffd700 !important;
+}
+
+.box-inner-text {
+    font-weight: bold !important;
+}
+
+.who-am-section {
+    background-image: linear-gradient(to right, #fedf2c, #b79c02) !important;
+}
+
+.box-container {
+    box-shadow: 0 0 5px 5px #ffd700;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 15px;
+}

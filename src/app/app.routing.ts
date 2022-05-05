@@ -20,15 +20,16 @@ import { BlocksComponent } from './blocks/blocks.component';
 import { PaymentsComponent } from './payments/payments.component';
 import { RewardsComponent } from './rewards/rewards.component';
 import { HarvestersComponent } from './harvesters/harvesters.component';
+import { AuthenticationGuard } from './guards/authentication.guard';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
-  { path: 'partials', component: PartialsComponent },
-  { path: 'space', component: SpaceComponent },
-  { path: 'blocks', component: BlocksComponent },
-  { path: 'payments', component: PaymentsComponent },
-  { path: 'rewards', component: RewardsComponent },
-  { path: 'harvesters', component: HarvestersComponent },
+  { path: 'partials', component: PartialsComponent, canActivate: [AuthenticationGuard] },
+  { path: 'space', component: SpaceComponent, canActivate: [AuthenticationGuard] },
+  { path: 'blocks', component: BlocksComponent, canActivate: [AuthenticationGuard] },
+  { path: 'payments', component: PaymentsComponent, canActivate: [AuthenticationGuard] },
+  { path: 'rewards', component: RewardsComponent, canActivate: [AuthenticationGuard] },
+  { path: 'harvesters', component: HarvestersComponent, canActivate: [AuthenticationGuard] },
 
   // { path: 'join', component: JoinComponent },
   // { path: 'faq', component: FaqComponent },
@@ -42,7 +43,7 @@ const routes: Routes = [
   // { path: '404', component: PagenotfoundComponent },
 
   //{ path: '**', redirectTo: '404', pathMatch: 'full'},
-  // { path: '', redirectTo: 'landing', pathMatch: 'full' }
+  { path: '', redirectTo: '', pathMatch: 'full' }
 ];
 
 @NgModule({

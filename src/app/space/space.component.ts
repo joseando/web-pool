@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, Subject, BehaviorSubject } from 'rxjs';
 import { DataService } from '../data.service';
 
 @Component({
@@ -12,8 +11,8 @@ export class SpaceComponent implements OnInit {
   tabActive = 3;
 
 
-  sizeYAxisLabel: string = $localize`Estimated Size`;
-  sizeXAxisLabel: string = $localize`Time`;
+  sizeYAxisLabel: string = $localize`Tamaño estimado`;
+  sizeXAxisLabel: string = $localize`Tiempo`;
   sizeLegend: boolean = true;
   sizeLegendTitle: string = '';
   sizeLegendPosition: string = 'below';
@@ -39,11 +38,11 @@ export class SpaceComponent implements OnInit {
     this.dataService.getLauncherSize(launcher_id).subscribe((r) => {
       this.sizeData = [
         {
-          "name": $localize`Size (24 hours average)`,
+          "name": $localize`Tamaño (promedio 24h)`,
           "series": [],
         },
         {
-          "name": $localize`Size (8 hours average)`,
+          "name": $localize`Tamaño (promedio 8h)`,
           "series": [],
         },
       ];

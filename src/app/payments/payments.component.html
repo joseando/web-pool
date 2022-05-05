@@ -1,7 +1,7 @@
 <main>
     <div class="container">
         <div class="title-container">
-            <h1 class="title-container-text">Tu espacio</h1>
+            <h1 class="title-container-text title-text">Tu pagos</h1>
         </div>
         <div class="container">
             <ul ngbNav #nav="ngbNav" [(activeId)]="tabActive" class="nav-tabs navbar-inverse">
@@ -11,19 +11,21 @@
                         <div class="col-lg-12">
                             <div class="row row-grid">
                                 <div class="col-lg-4 justify-content-center">
-                                    <div class="card card-lift shadow border-0">
+                                    <div class="card card-lift shadow  box-container">
                                         <div *ngIf="payouttxs$ | async; let payouttxs"
-                                            class="card-body py-3 text-center text-uppercase">
-                                            <span class="text-primary"><span i18n="">Transacciones totales</span></span>
+                                            class="card-body py-3 text-center text-uppercase box-container">
+                                            <span class="box-title-text"><span i18n="">Transacciones
+                                                    totales</span></span>
                                             <p class="display-3">{{ payouttxsCollectionSize }}</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 justify-content-center">
-                                    <div class="card card-lift shadow border-0">
+                                    <div class="card card-lift shadow box-container">
                                         <div *ngIf="(payouttxs$ | async) as payouttxs"
-                                            class="card-body py-3 text-center text-uppercase">
-                                            <span class="text-primary"><span i18n="@@TotalPaid">Total
+                                            class="card-body py-3 text-center text-uppercase box-container">
+                                            <span class="text-primary"><span i18n="@@TotalPaid"
+                                                    class="box-title-text">Total
                                                     pagado</span></span>
                                             <p class="display-3">{{ farmer.payout.total_paid / 1000000000000 |
                                                 number:'1.6'
@@ -34,10 +36,11 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-4 justify-content-center">
-                                    <div class="card card-lift shadow border-0">
+                                    <div class="card card-lift shadow box-container">
                                         <div *ngIf="(payouttxs$ | async) as payouttxs"
-                                            class="card-body py-3 text-center text-uppercase">
-                                            <span class="text-primary"><span i18n="@@TotalUnpaid">Impagos</span></span>
+                                            class="card-body py-3 text-center text-uppercase box-container">
+                                            <span class="text-primary"><span i18n="@@TotalUnpaid"
+                                                    class="box-title-text">Impagos</span></span>
                                             <p class="display-3">{{ farmer.payout.total_unpaid / 1000000000000 |
                                                 number:'1.6' }}
                                                 XCH
@@ -52,24 +55,25 @@
                     <table class="table table-sm table-striped table-responsive-lg">
                         <thead>
                             <tr>
-                                <th scope="col" i18n="@@Date">Date</th>
-                                <th scope="col" i18n="@@Transaction">Transaction</th>
-                                <th scope="col" i18n="@@ConfirmedBlock">Confirmed Block</th>
-                                <th scope="col" i18n="@@Amount">Amount</th>
-                                <th scope="col" i18n="@@Price">Price</th>
+                                <th scope="col" i18n="@@Date" class="title-text">Fecha</th>
+                                <th scope="col" i18n="@@Transaction" class="title-text">Transacción</th>
+                                <th scope="col" i18n="@@ConfirmedBlock" class="title-text">Bloque confirmado</th>
+                                <th scope="col" i18n="@@Amount" class="title-text">Cantidad</th>
+                                <th scope="col" i18n="@@Price" class="title-text">Precio</th>
                             </tr>
                         </thead>
                         <tbody *ngIf="(payouttxs$ | async) as payouttxs;">
                             <tr *ngFor="let payouttx of payouttxs; let i = index">
-                                <td>{{ payouttx.created_at_time | date:"medium" }}</td>
-                                <td>{{ payouttx.transaction_name }}</td>
-                                <td>{{ payouttx.confirmed_block_index }}</td>
-                                <td>{{ payouttx.amount / 1000000000000 }} XCH</td>
+                                <td class="height-value">{{ payouttx.created_at_time | date:"medium" }}</td>
+                                <td class="description-text">{{ payouttx.transaction_name }}</td>
+                                <td class="description-text">{{ payouttx.confirmed_block_index }}</td>
+                                <td class="description-text">{{ payouttx.amount / 1000000000000 }} XCH</td>
                                 <td>
-                                    <span *ngIf="payouttx.xch_price">${{
+                                    <span *ngIf="payouttx.xch_price" class="description-text">${{
                                         payouttx.xch_price?.usd * (payouttx.amount / 1000000000000) | number }}
                                         USD</span>
-                                    <span *ngIf="!payouttx.xch_price" i18n="@@Unknown">Unknown</span>
+                                    <span *ngIf="!payouttx.xch_price" i18n="@@Unknown"
+                                        class="description-text">Unknown</span>
                                 </td>
                             </tr>
                             <tr *ngIf="payouttxs.length == 0">

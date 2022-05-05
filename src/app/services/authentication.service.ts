@@ -8,6 +8,7 @@ export class AuthenticationService {
 
   private isUserAuthenticated = new Subject<boolean>()
 
+
   getAuthentication() {
     return this.isUserAuthenticated.asObservable()
   }

@@ -14,6 +14,7 @@ export class LandingComponent implements OnInit, OnDestroy {
   @ViewChild('searchinput') searchInput: ElementRef;
 
   isUserAuthenticated: boolean = false
+  authtSubscription: Subscription
 
   searchNotFound: boolean = false;
   farmersCollectionSize: number = 0;
@@ -60,13 +61,13 @@ export class LandingComponent implements OnInit, OnDestroy {
     this.blocks$ = this._blocks$.asObservable();
     this.launchers$ = this._launchers$.asObservable();
     this.payouts$ = this._payouts$.asObservable();
-
   }
 
   ngOnInit() {
-
-    this.authSvc.getAuthentication().subscribe(value => { this.isUserAuthenticated = value })
-
+    console.log('value landing', this.isUserAuthenticated)
+    this.authtSubscription = this.authSvc.getAuthentication().subscribe(value => {
+      this.isUserAuthenticated = value
+    })
     this.dataService.getStats().subscribe(data => {
       this.pool_space = data['pool_space'];
       this.estimate_win = this.secondsToHm(data['estimate_win'] * 60);
@@ -125,7 +126,6 @@ export class LandingComponent implements OnInit, OnDestroy {
   }
 
   private handleBlocks(data) {
-    console.log('data', data)
     this.blocksCollectionSize = data['count'];
     this._blocks$.next(data['results']);
   }
@@ -143,7 +143,8 @@ export class LandingComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    // this.searchSubscription.unsubscribe();
+    console.log('lanmding destroyed')
+    this.authtSubscription.unsubscribe()
   }
 
 }

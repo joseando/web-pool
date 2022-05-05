@@ -3,7 +3,7 @@
         <div class="container">
 
             <div class="title-container">
-                <h1 class="title-container-text">
+                <h1 class="title-container-text title-text">
                     Tus recompensas
                 </h1>
             </div>
@@ -16,30 +16,36 @@
                             <table class="table table-sm table-striped table-responsive-lg">
                                 <tbody>
                                     <tr>
-                                        <th scope="col" i18n>Ultimas 24h</th>
-                                        <td>
+                                        <th scope="col" i18n class="title-text">Ultimas 24h</th>
+                                        <td class="description-text">
                                             {{ farmer?.rewards?.last_24h / 1000000000000 }} XCH
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th scope="col" i18n>Hoy</th>
-                                        <td>{{ farmer?.rewards?.today / 1000000000000 }} XCH</td>
+                                        <th scope="col" i18n class="title-text">Hoy</th>
+                                        <td class="description-text">{{ farmer?.rewards?.today / 1000000000000 }} XCH
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <th scope="col" i18n>Ayer</th>
-                                        <td>{{ farmer?.rewards?.yesterday / 1000000000000 }} XCH</td>
+                                        <th scope="col" i18n class="title-text">Ayer</th>
+                                        <td class="description-text">{{ farmer?.rewards?.yesterday / 1000000000000 }}
+                                            XCH
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <th scope="col" i18n>Ultimos 7 dias</th>
-                                        <td>{{ farmer?.rewards?.last_7d / 1000000000000 }} XCH</td>
+                                        <th scope="col" i18n class="title-text">Ultimos 7 dias</th>
+                                        <td class="description-text">{{ farmer?.rewards?.last_7d / 1000000000000 }} XCH
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <th scope="col" i18n>Ultimos 30 dias</th>
-                                        <td>{{ farmer?.rewards?.last_30d / 1000000000000 }} XCH</td>
+                                        <th scope="col" i18n class="title-text">Ultimos 30 dias</th>
+                                        <td class="description-text">{{ farmer?.rewards?.last_30d / 1000000000000 }} XCH
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
-                            * <span i18n>Las fechas de arriba vienen dadas en sistema horario UTC</span>
+                            <span i18n class="description-text">* Las fechas de arriba vienen dadas en sistema horario
+                                UTC</span>
                         </div>
                         <div class="col-8 test " style="display: block;" #rewardsContainerRef>
                             <ngx-charts-bar-vertical [view]="[rewardsContainerRef.offsetWidth, 280]"
@@ -56,34 +62,36 @@
                     <table class="table table-sm table-striped">
                         <thead>
                             <tr>
-                                <th scope="col" i18n="@@Date">Fecha</th>
-                                <th scope="col" i18n="@@Blocks">Bloques</th>
-                                <th scope="col" i18n="@@Amount">Cantidad</th>
-                                <th scope="col" i18n="@@Paid">Pagos</th>
-                                <th scope="col" i18n="@@RewardID">Recompensa ID</th>
+                                <th scope="col" i18n="@@Date" class="title-text">Fecha</th>
+                                <th scope="col" i18n="@@Blocks" class="title-text">Bloques</th>
+                                <th scope="col" i18n="@@Amount" class="title-text">Cantidad</th>
+                                <th scope="col" i18n="@@Paid" class="title-text">Pagos</th>
+                                <th scope="col" i18n="@@RewardID" class="title-text">Recompensa ID</th>
                             </tr>
                         </thead>
                         <tbody *ngIf="(payoutaddrs$ | async) as payoutaddrs;">
                             <tr *ngFor="let payoutaddr of payoutaddrs; let i = index">
-                                <td>{{ payoutaddr.payout.datetime | date:"medium" }}</td>
-                                <td><span *ngFor="let block of payoutaddr.payout.blocks">#{{ block.farmed_height}}
+                                <td class="height-value">{{ payoutaddr.payout.datetime | date:"medium" }}</td>
+                                <td><span *ngFor="let block of payoutaddr.payout.blocks" class="description-text">#{{
+                                        block.farmed_height}}
                                     </span>
                                 </td>
-                                <td>{{ payoutaddr.amount / 1000000000000 }} XCH</td>
+                                <td class="description-text">{{ payoutaddr.amount / 1000000000000 }} XCH</td>
                                 <td>
                                     <span *ngIf="payoutaddr.transaction && payoutaddr.transaction.confirmed_block_index"
-                                        i18n>Yes</span>
+                                        i18n class="description-text">Yes</span>
                                     <span
                                         *ngIf="payoutaddr.transaction && !payoutaddr.transaction.confirmed_block_index"
-                                        i18n>Confirming</span>
+                                        i18n class="description-text">Confirming</span>
                                     <span *ngIf="!payoutaddr.transaction" i18n>Pending</span>
                                 </td>
-                                <td><a [routerLink]="['/explorer/reward', payoutaddr.payout.id]">{{ payoutaddr.payout.id
-                                        }}</a>
+                                <td class="tick-text">{{ payoutaddr.payout.id
+                                    }}
                                 </td>
                             </tr>
                             <tr *ngIf="payoutaddrs.length == 0">
-                                <td colspan="7" i18n="@@NoRewards">No se han encontrado recompensas!</td>
+                                <td colspan="7" i18n="@@NoRewards" class="description-text">No se han encontrado
+                                    recompensas!</td>
                             </tr>
                         </tbody>
                     </table>

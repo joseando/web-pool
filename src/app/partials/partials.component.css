@@ -1,29 +1,56 @@
 .main-container {
-    padding: 50px;
+  padding: 50px;
 }
+
 .chart-container {
-    height: 400px;
-} 
-.partial-error-row {
-    font-weight: bold;
-    color: #ff0000;
-  }
-  
-  .fa-partial-error {
-    color: #ff0000 !important;
-  }
-  
-  .btn-openchia {
-    background-color: #129b00;
-    border-color: #129b00;
-    color: white;
-  }
-  
-  .fa-copy-farmer {
-    padding-right: 4px;
-  }
-  
-  .fa-check-farmer {
-    color: #129b00
-  }
-  
+  height: 400px;
+}
+
+.box-title-text {
+  color: black !important;
+  font-weight: bold;
+}
+
+.title-text {
+  color: white !important;
+  font-weight: bolder;
+}
+
+.description-text {
+  color: #CFCFCF !important;
+  font-weight: bolder;
+}
+
+.login-button {
+  background-color: #ffd700;
+  color: black !important
+}
+
+.height-value {
+  color: #ffd700 !important;
+}
+
+.box-inner-text {
+  font-weight: bold !important;
+}
+
+.tick-text {
+  color: rgb(9, 255, 9);
+}
+
+ngx-charts-chart svg g text {
+  fill: white !important
+}
+
+.box-container {
+  box-shadow: 0 0 5px 5px #ffd700;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 15px;
+}
+
+.box-text-title {
+  color: black !important;
+  font-weight: bold;
+}

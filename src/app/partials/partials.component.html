@@ -13,17 +13,17 @@
             <strong i18n="@@Warning">Warning</strong>: <span i18n>farmer doesn't exist, has left and/or has been
                 removed.</span>
         </div>
-        <h3 class="display-3" i18n>Informacion granjero</h3>
+        <h3 class="display-3 title-text" i18n>Informacion farmer</h3>
         <table class="table table-sm table-striped table-responsive-lg">
             <tbody>
                 <tr>
-                    <th i18n>Launcher ID</th>
-                    <td colspan="3">{{ farmer.launcher_id }}</td>
+                    <th i18n class="title-text">Launcher ID</th>
+                    <td colspan="3" class="description-text">{{ farmer.launcher_id }}</td>
                 </tr>
                 <tr>
-                    <th i18n>Nombre</th>
+                    <th i18n class="title-text">Nombre</th>
                     <td>
-                        <span *ngIf="farmer.name">{{ farmer.name }}</span>
+                        <span *ngIf="farmer.name" class="description-text">{{ farmer.name }}</span>
                         <ng-template #notsetTooltip>
                             <a href="https://blog.openchia.io/2021/07/27/howto-set-name.html" target="_blank" i18n>Learn
                                 how to set
@@ -33,15 +33,17 @@
                             (not set) <i class="fas fa-info-circle" closeDelay="4000" [ngbTooltip]="notsetTooltip"></i>
                         </span>
                     </td>
-                    <th i18n="@@FirstLastJoined">Ultima conexion</th>
+                    <th i18n="@@FirstLastJoined" class="title-text">Ultima conexion</th>
                     <td>
-                        <span *ngIf="farmer.joined_at">{{ farmer.joined_at | date:"medium" }}</span>
+                        <span *ngIf="farmer.joined_at" class="description-text">{{ farmer.joined_at | date:"medium"
+                            }}</span>
                         <span *ngIf="!farmer.joined_at" i18n>
                             (unknown) <i class="fas fa-info-circle"
                                 ngbTooltip="Unknown because this user arrived before the integration of this function in pool."></i>
                         </span>
                         /
-                        <span *ngIf="farmer.joined_last_at">{{ farmer.joined_last_at | date:"medium" }}</span>
+                        <span *ngIf="farmer.joined_last_at" class="description-text">{{ farmer.joined_last_at |
+                            date:"medium" }}</span>
                         <span *ngIf="!farmer.joined_last_at" i18n>
                             (unknown) <i class="fas fa-info-circle"
                                 ngbTooltip="Unknown because this user arrived before the integration of this function in pool."></i>
@@ -49,65 +51,69 @@
                     </td>
                 </tr>
                 <tr>
-                    <th i18n="@@Difficulty">Dificultad</th>
-                    <td>{{ farmer.difficulty }}</td>
-                    <th><span i18n>Tamaño estimado</span>&nbsp;<i class="fas fa-info-circle"
+                    <th i18n="@@Difficulty" class="title-text">Dificultad</th>
+                    <td class="description-text">{{ farmer.difficulty }}</td>
+                    <th><span i18n class="title-text">Tamaño estimado</span>&nbsp;<i
+                            class="fas fa-info-circle title-text"
                             ngbTooltip="Be aware this is a rough estimate and will vary based on the partials sent for the last 24 hours! This is by no means a representation of your actual farm size."></i>
                     </th>
-                    <td>{{ farmer.estimated_size || 0 | filesize:{"base": 2, "standard": "iec" } }} (<span i18n>{{
+                    <td class="description-text">{{ farmer.estimated_size || 0 | filesize:{"base": 2, "standard": "iec"
+                        } }} (<span i18n>{{
                             farmer.share_pplns * 100 | number:"2.3" }}% of pool</span>)</td>
                 </tr>
                 <tr>
-                    <th i18n>Puntos (PPLNS)</th>
-                    <td>{{ farmer.points_pplns }}</td>
-                    <th i18n>Effective Fee</th>
-                    <td>{{ farmer.fee.final * 100 | number:".4"}}%</td>
+                    <th i18n class="title-text">Puntos (PPLNS)</th>
+                    <td class="description-text">{{ farmer.points_pplns }}</td>
+                    <th i18n class="title-text">Effective Fee</th>
+                    <td class="description-text">{{ farmer.fee.final * 100 | number:".4"}}%</td>
                 </tr>
                 <tr>
-                    <th><span i18n>Tiempo estimado para ganar (ETW)</span>&nbsp;
+                    <th><span i18n class="title-text">Tiempo estimado para ganar (ETW)</span>&nbsp;
                         <ng-template #etwTooltip>
                             <span i18n>Based on farmer estimated size and netspace. This value may vary
                                 significantly.</span>
                         </ng-template>
-                        <i class="fas fa-info-circle" [ngbTooltip]="etwTooltip"></i>
+                        <i class="fas fa-info-circle title-text" [ngbTooltip]="etwTooltip"></i>
                     </th>
-                    <td *ngIf="farmer.current_etw">{{ humanize(farmer.current_etw * 1000) }}</td>
+                    <td *ngIf="farmer.current_etw" class="description-text">{{ humanize(farmer.current_etw * 1000) }}
+                    </td>
                     <td *ngIf="!farmer.current_etw" i18n>Unknown</td>
-                    <th><span i18n>Esfuerzo actual</span>&nbsp;
+                    <th><span i18n class="title-text">Esfuerzo actual</span>&nbsp;
                         <ng-template #currentEffortTooltip>
                             <span i18n>Estimate based on last block farmed and current estimated time to win. If the
                                 farmer never
                                 farmed
                                 one block then the creation date of the Plot NFT is used as a starting point.</span>
                         </ng-template>
-                        <i class="fas fa-info-circle" [ngbTooltip]="currentEffortTooltip"></i>
+                        <i class="fas fa-info-circle title-text" [ngbTooltip]="currentEffortTooltip"></i>
                     </th>
-                    <td *ngIf="(farmer.current_effort || 0) >= 0">{{ farmer.current_effort | number }}%</td>
-                    <td *ngIf="farmer.current_effort == null" i18n>Unknown</td>
+                    <td *ngIf="(farmer.current_effort || 0) >= 0" class="description-text">{{ farmer.current_effort |
+                        number }}%</td>
+                    <td *ngIf="farmer.current_effort == null" class="description-text" i18n>Unknown</td>
                 </tr>
                 <tr>
-                    <th scope="col"><span i18n="@@EstimatedRewardDay">Estimated Reward</span>
+                    <th scope="col"><span i18n="@@EstimatedRewardDay" class="title-text">Recompensa estimada</span>
                         <ng-template #estimatedrewardDayTooltip>
                             <span i18n>Profitability based on blocks farmed on last 30 days, based on your farm
                                 space.</span>
                         </ng-template>
-                        &nbsp;<i class="fas fa-info-circle" closeDelay="4000"
+                        &nbsp;<i class="fas fa-info-circle title-text" closeDelay="4000"
                             [ngbTooltip]="estimatedrewardDayTooltip"></i>
                     </th>
-                    <td>
+                    <td class="description-text">
                         {{ xch_tb_month * (farmer.estimated_size / 1024 / 1024 / 1024 / 1024) | number:".4" }} XCH /day
                         (${{ xch_current_price_usd * (xch_tb_month * (farmer.estimated_size / 1024 / 1024 / 1024 /
                         1024)) |
                         number:".2" }})
                     </td>
-                    <td>
+                    <td class="description-text">
                         {{ xch_tb_month * (farmer.estimated_size / 1024 / 1024 / 1024 / 1024) * 7 | number:".4" }} XCH /
                         week
                         (${{ xch_current_price_usd * (xch_tb_month * (farmer.estimated_size / 1024 / 1024 / 1024 / 1024)
                         * 7) |
                         number:".2" }})
                     </td>
-                    <td>
+                    <td class="description-text">
                         {{ xch_tb_month * (farmer.estimated_size / 1024 / 1024 / 1024 / 1024) * 31 | number:".4" }} XCH
                         / month
                         (${{ xch_current_price_usd * (xch_tb_month * (farmer.estimated_size / 1024 / 1024 / 1024 / 1024)
@@ -137,47 +143,52 @@
                         <div class="col-lg-12">
                             <div class="row row-grid">
                                 <div class="col-lg-2 justify-content-center">
-                                    <div class="card card-lift shadow border-0">
-                                        <div class="card-body py-3 text-center text-uppercase">
-                                            <span class="text-primary"><span
-                                                    i18n="@@Partials">Parcelas</span><br />(<span i18n="@@Hrs24">24
+                                    <div class="card card-lift shadow border-0 box-container">
+                                        <div class="card-body py-3 text-center text-uppercase box-container">
+                                            <span class="text-primary"><span i18n="@@Partials"
+                                                    class="box-text-title">Parcelas</span><br />(<span i18n="@@Hrs24"
+                                                    class="box-text-title">24
                                                     horas</span>)</span>
                                             <p class="display-3">{{ partialsCollectionSize }}</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-2 justify-content-center">
-                                    <div class="card card-lift shadow border-0">
-                                        <div class="card-body py-3 text-center text-uppercase">
-                                            <span class="text-primary"><span i18n="@@Points">Puntos</span><br />(<span
-                                                    i18n="@@Hrs24">24
-                                                    horas</span>)</span>
+                                    <div class="card card-lift shadow border-0 box-container">
+                                        <div class="card-body py-3 text-center text-uppercase box-container">
+                                            <span class="text-primary"><span i18n="@@Points"
+                                                    class="box-text-title">Puntos</span><br /><span i18n="@@Hrs24"
+                                                    class="box-text-title">(24
+                                                    horas)</span></span>
                                             <p class="display-3">{{ partialsPoints }}</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-2 justify-content-center">
-                                    <div class="card card-lift shadow border-0">
-                                        <div class="card-body py-3 text-center text-uppercase">
+                                    <div class="card card-lift shadow border-0 box-container">
+                                        <div class="card-body py-3 text-center text-uppercase box-container">
                                             <span class="text-primary"><span i18n="@@SuccessfulPartials_preline"
-                                                    style="word-spacing: 300px">Parcelas exitosas</span></span>
+                                                    style="word-spacing: 300px" class="box-text-title">Parcelas
+                                                    exitosas</span></span>
                                             <p class="display-3">{{ partialsSuccessful }}</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-2 justify-content-center">
-                                    <div class="card card-lift shadow border-0">
-                                        <div class="card-body py-3 text-center text-uppercase">
-                                            <span class="text-warning"><span i18n="@@FailedPartials_preline"
-                                                    style="word-spacing: 300px">Parcelas fallidas</span></span>
+                                    <div class="card card-lift shadow border-0 box-container">
+                                        <div class="card-body py-3 text-center text-uppercase box-container">
+                                            <span class="text-warning box-text-title"><span
+                                                    i18n="@@FailedPartials_preline" style="word-spacing: 300px">Parcelas
+                                                    fallidas</span></span>
                                             <p class="display-3">{{ partialsFailed }}</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-2 justify-content-center">
-                                    <div class="card card-lift shadow border-0">
-                                        <div class="card-body py-3 text-center text-uppercase">
-                                            <span class="text-info"><span i18n="@@Partials">Desempeño</span><br /><span
+                                    <div class="card card-lift shadow border-0 box-container">
+                                        <div class="card-body py-3 text-center text-uppercase box-container">
+                                            <span class="text-info box-text-title"><span i18n="@@Partials"
+                                                    class="box-text-title">Desempeño</span><br /><span
                                                     i18n="@@Performance">de parcelas</span></span>
                                             <p class="display-3"
                                                 ngbTooltip="{{ 100 - ( partialsFailed * 100 / partialsSuccessful ) | number:'2.6' }}%">
@@ -193,44 +204,48 @@
                     <br />
                     <div class="row justify-content-left">
                         <div class="col-lg-12">
-                            <h4 class="display-3" i18n>Partials</h4>
+                            <h4 class="display-3 title-text" i18n>Partials</h4>
                         </div>
                     </div>
                     <br />
                     <table class="table table-sm table-striped table-responsive-lg">
                         <thead>
                             <tr>
-                                <th scope="col" i18n="@@Date">Fecha</th>
-                                <th scope="col" i18n="@@Difficulty">Dificultad</th>
-                                <th scope="col" i18n>Harvester ID</th>
-                                <th scope="col" i18n>Grafica ID</th>
-                                <th scope="col" i18n>Estado</th>
+                                <th scope="col" i18n="@@Date" class="title-text">Fecha</th>
+                                <th scope="col" i18n="@@Difficulty" class="title-text">Dificultad</th>
+                                <th scope="col" i18n class="title-text">Harvester ID</th>
+                                <th scope="col" i18n class="title-text">Grafica ID</th>
+                                <th scope="col" i18n class="title-text">Estado</th>
                             </tr>
                         </thead>
                         <tbody *ngIf="partialsTable">
                             <tr *ngFor="let partial of partialsFiltered | slice: (partialsPage-1) * partialsPageSize : partialsPage * partialsPageSize"
                                 [class]="(partial.error && !failedPartials) ? 'partial-error-row' : ''">
-                                <td>{{ partial.timestamp * 1000 | date:"medium" }}</td>
-                                <td>{{ partial.difficulty }}</td>
+                                <td class="height-value">{{ partial.timestamp * 1000 | date:"medium" }}</td>
+                                <td class="description-text">{{ partial.difficulty }}</td>
                                 <td>
-                                    <i class="fas fa-copy fa-copy-farmer"
+                                    <i class="fas fa-copy fa-copy-farmer description-text"
                                         (click)="copyToClipboard(partial.harvester_id)" ngbTooltip="Copy Harvester ID"
                                         placement="top" container="body"></i>
-                                    <span ngbTooltip="{{ partial.harvester_id }}" placement="top" container="body">
+                                    <span ngbTooltip="{{ partial.harvester_id }}" placement="top" container="body"
+                                        class="description-text">
                                         {{ (partial.harvester_id | slice:0:20) }}
                                     </span>
                                 </td>
                                 <td>
-                                    <i class="fas fa-copy fa-copy-farmer" (click)="copyToClipboard(partial.plot_id)"
-                                        ngbTooltip="Copy Plot ID" placement="top" container="body"></i>
-                                    <span ngbTooltip="{{ partial.plot_id }}" placement="top" container="body">
+                                    <i class="fas fa-copy fa-copy-farmer description-text"
+                                        (click)="copyToClipboard(partial.plot_id)" ngbTooltip="Copy Plot ID"
+                                        placement="top" container="body"></i>
+                                    <span ngbTooltip="{{ partial.plot_id }}" placement="top" container="body"
+                                        class="description-text description-text">
                                         {{ (partial.plot_id | slice:0:20) }}
                                     </span>
                                 </td>
                                 <td *ngIf="partial.error">{{ partial.error }} <a href="javascript:void();"
                                         (click)="showPartialError(content)"><i
-                                            class="fas fa-info-circle fa-partial-error"></i></a>
-                                <td *ngIf="!partial.error"><i class="fas fa-check fa-check-farmer"></i></td>
+                                            class="fas fa-info-circle fa-partial-error description-text"></i></a>
+                                <td *ngIf="!partial.error"><i class="fas fa-check fa-check-farmer tick-text"></i>
+                                </td>
                             </tr>
                             <tr *ngIf="partialsFiltered.length == 0">
                                 <td colspan="5" i18n>No partials found!</td>

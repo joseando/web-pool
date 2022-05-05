@@ -1,33 +1,38 @@
 <main>
   <section class="input-section">
     <div *ngIf="!isUserAuthenticated" class="input-container">
-      <h1 class="title-login">Inicia sesión</h1>
+      <h1 class="title-login title-text">Inicia sesión</h1>
       <input #searchinput type="text" placeholder="Introduce tu Launcher ID..." class="form-control"
         (keydown.enter)="searchFarmer()" />
-      <button class="btn btn-primary" (click)="searchFarmer()">Enviar</button>
+      <button class="btn btn-primary login-button" (click)="searchFarmer()">Enviar</button>
     </div>
+    <h1 *ngIf="isUserAuthenticated">
+      autenticado
+    </h1>
   </section>
   <!-- Join pool -->
   <section class="pricing-5" id="pricing-6">
     <div class="pt-5 container join-main-container">
       <div class="row join-main-container-inner">
         <div class="d-flex justify-content-center justify-content-bottom flex-column col-md-4 text-center">
-          <h3 class="display-3 mt-3" i18n>Pool-joseando.net 🚀</h3>
-          <p class="lead mt-0" i18n>
+          <h3 class="display-3 mt-3 title-text" i18n>Pool-joseando.net 🚀</h3>
+          <p class="lead mt-0 description-text" i18n>
             La pool con el mejor mantenimiento y soporte de toda España!
-            Visita tambien mi web personal <span class="text-primary">https://xch-joseando.tech/</span></p>
+            Visita tambien mi web personal <span
+              class="text-primary link-text height-value">https://xch-joseando.tech/</span></p>
 
         </div>
         <div class="pool-description-container">
           <div class="pool-description">
-            <h1>"Pool ESPAÑOLA 100%"</h1>
-            <p>Con 0% de Fee y como estais acostumbrados en JOSEANDO.NET con el mejor Soporte 24/7 en Español.</p>
+            <h1 class="title-text">"Pool ESPAÑOLA 100%"</h1>
+            <p class="description-text">Con 0% de Fee y como estais acostumbrados en JOSEANDO.NET con el mejor Soporte
+              24/7 en Español.</p>
           </div>
           <div class="pool-urls">
-            <p class="pool-urls-title">URL para entrar al POOL</p>
-            <p>https://EU.pool-joseando.net</p>
-            <p>https://USA.pool-joseando.net</p>
-            <p>https://ASIA.pool-joseando.net</p>
+            <p class="title-text">URL para entrar al POOL</p>
+            <p class="description-text height-value">https://EU.pool-joseando.net</p>
+            <p class="description-text height-value">https://USA.pool-joseando.net</p>
+            <p class="description-text height-value">https://ASIA.pool-joseando.net</p>
           </div>
         </div>
       </div>
@@ -46,50 +51,52 @@
         <div class="col-lg-12">
           <div class="row row-grid text-center">
             <div class="col-lg-2">
-              <div class="card card-lift shadow border-0">
-                <div class="card-body py-3">
-                  <h6 class="text-primary text-uppercase" i18n>Precio XCH</h6>
-                  <p class="description mt-3">{{ xch_current_price['eur'] }}€</p>
+              <div class="card card-lift shadow box-container">
+                <div class="card-body py-3 box-container">
+                  <h6 class="text-primary text-uppercase box-title-text" i18n>Precio XCH</h6>
+                  <p class="description mt-3 box-inner-text">{{ xch_current_price['eur'] }}€</p>
                 </div>
               </div>
             </div>
             <div class="col-lg-2">
-              <div class="card card-lift shadow border-0">
-                <div class="card-body py-3">
-                  <h6 class="text-primary text-uppercase" i18n>Espacio pool</h6>
-                  <p class="description mt-3">{{ pool_space | filesize:{"base": 2, "standard": "iec"} }}</p>
+              <div class="card card-lift shadow border-0 box-container">
+                <div class="card-body py-3 box-container">
+                  <h6 class="text-primary text-uppercase box-title-text" i18n>Espacio pool</h6>
+                  <p class="description mt-3 box-inner-text">{{ pool_space | filesize:{"base": 2, "standard": "iec"} }}
+                  </p>
                 </div>
               </div>
             </div>
             <div class="col-lg-2">
-              <div class="card card-lift shadow border-0">
-                <div class="card-body py-3">
-                  <h6 class="text-success text-uppercase" i18n>ETW</h6>
-                  <p class="description mt-3" i18n>{{ estimate_win }}</p>
+              <div class="card card-lift shadow border-0 box-container">
+                <div class="card-body py-3 box-container">
+                  <h6 class="text-success text-uppercase box-title-text" i18n>ETW</h6>
+                  <p class="description mt-3 box-inner-text" i18n>{{ estimate_win }}</p>
                 </div>
               </div>
             </div>
             <div class="col-lg-2">
-              <div class="card card-lift shadow border-0">
-                <div class="card-body py-3">
-                  <h6 class="text-warning text-uppercase" i18n>Bloques</h6>
-                  <p class="description mt-3" i18n>{{ rewards_blocks }} farmed</p>
+              <div class="card card-lift shadow border-0 box-container">
+                <div class="card-body py-3 box-container">
+                  <h6 class="text-warning text-uppercase box-title-text" i18n>Bloques</h6>
+                  <p class="description mt-3 box-inner-text" i18n>{{ rewards_blocks }} farmed</p>
                 </div>
               </div>
             </div>
             <div class="col-lg-2">
-              <div class="card card-lift shadow border-0">
-                <div class="card-body py-3">
-                  <h6 class="text-info text-uppercase" i18n="@@Farmers">Granjeros</h6>
-                  <p class="description mt-3" i18n>{{ farmers }} total</p>
+              <div class="card card-lift shadow border-0 box-container">
+                <div class="card-body py-3 box-container">
+                  <h6 class="text-info text-uppercase box-title-text" i18n="@@Farmers">Granjeros</h6>
+                  <p class="description mt-3 box-inner-text " i18n>{{ farmers }} total</p>
                 </div>
               </div>
             </div>
             <div class="col-lg-2">
-              <div class="card card-lift shadow border-0">
-                <div class="card-body py-3">
-                  <h6 class="text-info text-uppercase" i18n>Espacio total</h6>
-                  <p class="description mt-3">{{ netspace | filesize:{"base": 2, "standard": "iec"} }}</p>
+              <div class="card card-lift shadow border-0 box-container">
+                <div class="card-body py-3 box-container">
+                  <h6 class="text-info text-uppercase box-title-text" i18n>Espacio total</h6>
+                  <p class="description mt-3 box-inner-text">{{ netspace | filesize:{"base": 2, "standard": "iec"} }}
+                  </p>
                 </div>
               </div>
             </div>
@@ -98,54 +105,55 @@
         <div class="col-lg-12 mt-3">
           <div class="row row-grid text-center">
             <div class="col-lg-3">
-              <div class="card card-lift shadow border-0">
-                <div class="card-body py-3">
-                  <h6 class="text-primary text-uppercase" i18n="@@CurrentEffort">Esfuerzo actual</h6>
-                  <p class="description mt-3">{{ current_effort | number:".0-0" }}%</p>
+              <div class="card card-lift shadow border-0 box-container">
+                <div class="card-body py-3 box-container">
+                  <h6 class="text-primary text-uppercase box-title-text" i18n="@@CurrentEffort">Esfuerzo actual</h6>
+                  <p class="description mt-3 box-inner-text">{{ current_effort | number:".0-0" }}%</p>
                 </div>
               </div>
             </div>
             <div class="col-lg-2">
-              <div class="card card-lift shadow border-0">
-                <div class="card-body py-3">
-                  <h6 class="text-primary text-uppercase"><span i18n="@@Effort">Esfuerzo</span>
+              <div class="card card-lift shadow border-0 box-container">
+                <div class="card-body py-3 box-container">
+                  <h6 class="text-primary text-uppercase box-title-text"><span i18n="@@Effort">Esfuerzo</span>
                     <ng-template #effortTooltip>
                       <span i18n>Esfuerzo promedio para farmear un bloque basado en los ultimos 30 dias
                       </span>
                     </ng-template>
                     &nbsp;<i class="fas fa-info-circle" closeDelay="4000" [ngbTooltip]="effortTooltip"></i>
                   </h6>
-                  <p class="description mt-3">{{ average_effort | number:".0-0" }}%</p>
+                  <p class="description mt-3 box-inner-text">{{ average_effort | number:".0-0" }}%</p>
                 </div>
               </div>
             </div>
             <div class="col-lg-2">
-              <div class="card card-lift shadow border-0">
-                <div class="card-body py-3">
-                  <h6 class="text-primary text-uppercase" i18n>Ultimo bloque</h6>
-                  <p class="description mt-3">{{ time_since_last_win }}</p>
+              <div class="card card-lift shadow border-0 box-container">
+                <div class="card-body py-3 box-container">
+                  <h6 class="text-primary text-uppercase box-title-text" i18n>Ultimo bloque</h6>
+                  <p class="description mt-3 box-inner-text">{{ time_since_last_win }}</p>
                 </div>
               </div>
             </div>
             <div class="col-lg-2">
-              <div class="card card-lift shadow border-0">
-                <div class="card-body py-3">
-                  <h6 class="text-primary text-uppercase" i18n="@@Rewards">Recompensas</h6>
-                  <p class="description mt-3">{{ rewards_amount / 1000000000000 }} XCH</p>
+              <div class="card card-lift shadow border-0 box-container">
+                <div class="card-body py-3 box-container">
+                  <h6 class="text-primary text-uppercase box-title-text" i18n="@@Rewards">Recompensas</h6>
+                  <p class="description mt-3 box-inner-text">{{ rewards_amount / 1000000000000 }} XCH</p>
                 </div>
               </div>
             </div>
             <div class="col-lg-3">
-              <div class="card card-lift shadow border-0">
-                <div class="card-body py-3">
-                  <h6 class="text-primary text-uppercase"><span i18n="@@Profitability">Rentabilidad</span>
+              <div class="card card-lift shadow border-0 box-container ">
+                <div class="card-body py-3 box-container">
+                  <h6 class="text-primary text-uppercase box-title-text"><span
+                      i18n="@@Profitability">Rentabilidad</span>
                     <ng-template #profTooltip>
                       <span i18n>Rentabilidad basada en los bloques farmeados en los ultimos 30 dias. El valor
                         (XCH) estimado que un granjeor conseguiria por TiB por dia</span>
                     </ng-template>
                     &nbsp;<i class="fas fa-info-circle" closeDelay="4000" [ngbTooltip]="profTooltip"></i>
                   </h6>
-                  <p class="description mt-3">{{ xch_tb_month | number:".8"}} XCH/TiB/day</p>
+                  <p class="description mt-3 box-inner-text">{{ xch_tb_month | number:".8"}} XCH/TiB/day</p>
                 </div>
               </div>
             </div>
@@ -160,52 +168,53 @@
   <!-- Bloques -->
   <section>
     <div class="container">
-      <h3 class="display-3" i18n>Bloques encontrados</h3>
+      <h3 class="display-3 title-text" i18n>Bloques encontrados</h3>
       <table class="table table-sm table-striped table-responsive-lg">
         <thead>
           <tr>
-            <th scope="col" i18n="@@Height">Altura</th>
-            <th scope="col" i18n="@@Date">Fechas</th>
-            <th scope="col" i18n="@@Farmer">Farmer</th>
-            <th scope="col"><span i18n="@@Poolspace">Espacio pool</span>
+            <th scope="col" i18n="@@Height" class="title-text">Altura</th>
+            <th scope="col" i18n="@@Date" class="title-text">Fechas</th>
+            <th scope="col" i18n="@@Farmer" class="title-text">Farmer</th>
+            <th scope="col" class="title-text"><span i18n="@@Poolspace">Espacio pool</span>
               <ng-template #poolspaceTooltip>
                 <span i18n>Espacio de la pool cuando se gana un bloque.</span>
               </ng-template>
               &nbsp;<i class="fas fa-info-circle" closeDelay="4000" [ngbTooltip]="poolspaceTooltip"></i>
             </th>
-            <th scope="col"><span i18n="@@PoolEffort">Pool Effort</span>
+            <th scope="col"><span i18n="@@PoolEffort" class="title-text">Esfuerzo pool</span>
               <ng-template #pooleffortTooltip>
                 <span i18n>Esfuerzo estimado para ganar un bloque</span>
               </ng-template>
-              &nbsp;<i class="fas fa-info-circle" closeDelay="4000" [ngbTooltip]="pooleffortTooltip"></i>
+              &nbsp;<i class="fas fa-info-circle title-text" closeDelay="4000" [ngbTooltip]="pooleffortTooltip"></i>
             </th>
           </tr>
         </thead>
         <tbody *ngIf="(blocks$ | async) as blocks;">
           <tr *ngFor="let block of blocks ">
-            <td>{{
+            <td class="height-value">{{
               block.farmed_height }}
             </td>
-            <td>{{ block.timestamp * 1000 | date:"medium" }}</td>
+            <td class="description-text">{{ block.timestamp * 1000 | date:"medium" }}</td>
             <td>
-              <a>
+              <a class="description-text">
                 {{ block.farmed_by.name || block.farmed_by.launcher_id }}
               </a>
             </td>
-            <td>{{ block.pool_space | filesize:{"base": 2, "standard": "iec"} }}</td>
+            <td class="description-text">{{ block.pool_space | filesize:{"base": 2, "standard": "iec"} }}</td>
             <td>
-              <span *ngIf="block.luck == -1" i18n="@@Unknown">Unknown</span>
-              <span *ngIf="block.luck != -1">
+              <span *ngIf="block.luck == -1" i18n="@@Unknown" class="description-text">Unknown</span>
+              <span *ngIf="block.luck != -1" class="description-text">
                 {{ block.luck }}% (
-                <span *ngIf="block.luck < 80" i18n="@@Lucky">Lucky</span>
-                <span *ngIf="block.luck >= 80 && block.luck <= 120" i18n="@@Average">Average</span>
-                <span *ngIf="block.luck > 120" i18n="@@Unlucky">Unlucky</span>
+                <span *ngIf="block.luck < 80" i18n="@@Lucky" class="description-text">Lucky</span>
+                <span *ngIf="block.luck >= 80 && block.luck <= 120" i18n="@@Average"
+                  class="description-text">Average</span>
+                <span *ngIf="block.luck > 120" i18n="@@Unlucky" class="description-text">Unlucky</span>
                 )
               </span>
             </td>
           </tr>
           <tr *ngIf="blocks.length == 0">
-            <td colspan="5" i18n>No blocks found!</td>
+            <td colspan="5" i18n class="description-text">No blocks found!</td>
           </tr>
         </tbody>
       </table>
@@ -221,24 +230,23 @@
   <!-- Rewards -->
   <section class="section section-sm pt-sm-0">
     <div class="container">
-      <h3 class="display-3" i18n>Recompensas</h3>
+      <h3 class="display-3 title-text" i18n>Recompensas</h3>
       <table class="table table-sm table-striped table-responsive-lg">
         <thead>
           <tr>
-            <th scope="col" i18n="@@ID">ID</th>
-            <th scope="col" i18n>Fechas</th>
-            <th scope="col" i18n="@@Amount">Cantidad</th>
+            <th scope="col" i18n="@@ID" class="title-text">ID</th>
+            <th scope="col" i18n class="title-text">Fechas</th>
+            <th scope="col" i18n="@@Amount" class="title-text">Cantidad</th>
           </tr>
         </thead>
         <tbody *ngIf="(payouts$ | async) as payouts;">
           <tr *ngFor="let payout of payouts; let i = index">
-            <td>
-              <a [routerLink]="['/explorer/reward', payout.id]" routerLinkActive="router-link-active">
-                {{ payout.id }}
-              </a>
+            <td class="height-value">
+              {{ payout.id }}
+
             </td>
-            <td>{{ payout.datetime | date:"medium" }}</td>
-            <td>{{ payout.amount / 1000000000000 | number }} XCH</td>
+            <td class="description-text">{{ payout.datetime | date:"medium" }}</td>
+            <td class="description-text">{{ payout.amount / 1000000000000 | number }} XCH</td>
           </tr>
           <tr *ngIf="payouts.length == 0">
             <td colspan="3" i18n="@@NoRewards">No rewards found!</td>
@@ -252,7 +260,7 @@
   </section>
 
   <!-- Discount promote -->
-  <section class="section section-sm section-shaped">
+  <section class="section section-sm section-shaped who-am-section">
     <div class="shape shape-style-1 shape-default"></div>
     <div class="container py-sm">
       <div class="row row-grid justify-content-between align-items-center">

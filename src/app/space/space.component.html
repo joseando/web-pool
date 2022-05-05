@@ -1,12 +1,11 @@
 <main>
     <div class="container">
         <div class="title-container">
-            <h1 class="title-container-text">Tu espacio</h1>
+            <h1 class="title-container-text title-text">Tu espacio</h1>
         </div>
         <ul ngbNav #nav="ngbNav" [(activeId)]="tabActive" class="nav-tabs navbar-inverse">
 
             <li [ngbNavItem]="3">
-                <a ngbNavLink><i class="fa fa-expand"></i>&nbsp;<span i18n>Tamaño estimado</span></a>
                 <div class="row justify-content-center">
                     <ngx-charts-area-chart [showXAxisLabel]="false" [showYAxisLabel]="true" [xAxis]="false"
                         [timeline]="false" [yAxis]="true" [xAxisLabel]="sizeXAxisLabel" [yAxisLabel]="sizeYAxisLabel"
