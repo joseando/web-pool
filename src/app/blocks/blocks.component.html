@@ -1,0 +1,98 @@
+<p>blocks works!</p>
+<main>
+    <div class="container">
+        <div class="title-container">
+            <h1 class="title-container-text">Tus bloques</h1>
+        </div>
+        <div class="block-container">
+            <ul ngbNav #nav="ngbNav" [(activeId)]="tabActive" class="nav-tabs navbar-inverse">
+
+                <li [ngbNavItem]="6">
+                    <br />
+                    <div class="row justify-content-center">
+                        <div class="col-lg-12">
+                            <div class="row row-grid">
+                                <div class="col-lg-12 justify-content-center">
+                                    <div class="card card-lift shadow border-0">
+                                        <div *ngIf="blocks$ | async; let blocks"
+                                            class="card-body py-3 text-center text-uppercase">
+                                            <span class="text-primary"><span i18n="">Bloques totales</span></span>
+                                            <p class="display-3">{{ blocksCollectionSize }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <table class="table table-sm table-striped table-responsive-lg">
+                        <thead>
+                            <tr>
+                                <th scope="col" i18n="@@Height">Altura</th>
+                                <th scope="col" i18n="@@Date">Fecha</th>
+                                <th scope="col" i18n="@@Amount">Cantidad</th>
+                                <th scope="col" i18n="@@Price">Precio</th>
+                                <th scope="col"><span i18n="@@PoolEffort">Esfuerzo pool</span>
+                                    <ng-template #effortTooltip>
+                                        <span i18n>
+                                            El esfuerzo requerido para conseguir el bloque
+                                        </span>
+                                    </ng-template>
+                                    &nbsp;<i class="fas fa-info-circle" closeDelay="4000"
+                                        [ngbTooltip]="effortTooltip"></i>
+                                </th>
+                                <th scope="col"><span i18n="@@Poolspace">Espacio pool</span>
+                                    <ng-template #poolspaceTooltip>
+                                        <span i18n>Espacio de la pool cuando se consiguio el bloque.</span>
+                                    </ng-template>
+                                    &nbsp;<i class="fas fa-info-circle" closeDelay="4000"
+                                        [ngbTooltip]="poolspaceTooltip"></i>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody *ngIf="(blocks$ | async) as blocks;">
+                            <tr *ngFor="let block of blocks; let i = index">
+                                <td>
+                                    <a href="https://www.spacescan.io/xch/block/height/{{ block.farmed_height }}"
+                                        target="_blank">
+                                        {{ block.farmed_height }}
+                                    </a>
+                                </td>
+                                <td>{{ block.timestamp * 1000 | date:"medium" }}</td>
+                                <td>{{ block.amount / 1000000000000 }} XCH</td>
+                                <td>
+                                    <span *ngIf="block.xch_price">${{ block.xch_price.usd * (block.amount /
+                                        1000000000000) |
+                                        number
+                                        }} USD</span>
+                                    <span *ngIf="!block.xch_price" i18n="@@Unknown">Unknown</span>
+                                </td>
+                                <td>
+                                    <span *ngIf="block.luck == -1" i18n="@@Unknown">Unknown</span>
+                                    <span *ngIf="block.luck != -1">
+                                        {{ block.luck }}% (
+                                        <span *ngIf="block.luck < 80" i18n="@@Lucky">Lucky</span>
+                                        <span *ngIf="block.luck >= 80 && block.luck <= 120"
+                                            i18n="@@Average">Average</span>
+                                        <span *ngIf="block.luck > 120" i18n="@@Unlucky">Unlucky</span>
+                                        )
+                                    </span>
+                                </td>
+                                <td>{{ block.pool_space | filesize:{"base": 2, "standard": "iec"} }}</td>
+                            </tr>
+                            <tr *ngIf="blocks.length == 0">
+                                <td colspan="6" i18n>No blocks found by this farmer!</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="d-flex justify-content-between p-2">
+                        <ngb-pagination [collectionSize]="blocksCollectionSize" [(page)]="blocksPage"
+                            [pageSize]="blocksPageSize" (pageChange)="refreshBlocks()">
+                        </ngb-pagination>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</main>

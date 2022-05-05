@@ -15,21 +15,31 @@ import { TermsComponent } from './terms/terms.component';
 import { CalculatorComponent } from './calculator/calculator.component';
 import { PagenotfoundComponent } from './errors/pagenotfound/pagenotfound.component';
 import { PartialsComponent } from './partials/partials.component'
+import { SpaceComponent } from './space/space.component';
+import { BlocksComponent } from './blocks/blocks.component';
+import { PaymentsComponent } from './payments/payments.component';
+import { RewardsComponent } from './rewards/rewards.component';
+import { HarvestersComponent } from './harvesters/harvesters.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
   { path: 'partials', component: PartialsComponent },
+  { path: 'space', component: SpaceComponent },
+  { path: 'blocks', component: BlocksComponent },
+  { path: 'payments', component: PaymentsComponent },
+  { path: 'rewards', component: RewardsComponent },
+  { path: 'harvesters', component: HarvestersComponent },
 
-  { path: 'join', component: JoinComponent },
-  { path: 'faq', component: FaqComponent },
-  { path: 'stats', component: StatsComponent },
-  { path: 'fees', component: FeesComponent },
-  { path: 'giveaway', component: GiveawayComponent },
-  { path: 'partners', component: PartnersComponent },
-  { path: 'referral', component: ReferralComponent },
-  { path: 'terms', component: TermsComponent },
-  { path: 'calculator', component: CalculatorComponent },
-  { path: '404', component: PagenotfoundComponent },
+  // { path: 'join', component: JoinComponent },
+  // { path: 'faq', component: FaqComponent },
+  // { path: 'stats', component: StatsComponent },
+  // { path: 'fees', component: FeesComponent },
+  // { path: 'giveaway', component: GiveawayComponent },
+  // { path: 'partners', component: PartnersComponent },
+  // { path: 'referral', component: ReferralComponent },
+  // { path: 'terms', component: TermsComponent },
+  // { path: 'calculator', component: CalculatorComponent },
+  // { path: '404', component: PagenotfoundComponent },
 
   //{ path: '**', redirectTo: '404', pathMatch: 'full'},
   // { path: '', redirectTo: 'landing', pathMatch: 'full' }

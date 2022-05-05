@@ -84,7 +84,7 @@ export class PartialsComponent implements OnInit {
   partialsChartColors = { domain: ['#129b00', '#e00000'] };
   sizeChartColors = { domain: ['#006400', '#9ef01a'] };
 
-  private farmerid: string = '381782c2f5a388671b228d6f0b9244504c626b647d3eb57824fdc84ebad78d15';
+  private farmerid: string = '5e8ff6038b3fdebf5f090f685c6ae314aa79d6d5fda9241354e5e4fad60d8938';
   public farmer: any = {};
 
   constructor(
@@ -99,22 +99,13 @@ export class PartialsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(data => {
-      this.farmerid = data['params']['id'];
-      this.refreshBlocks();
-      this.refreshPayouts();
-      this.refreshPayoutTxs();
-      this.dataService.getLauncher(this.farmerid).subscribe(launcher => {
-        this.farmer = launcher;
-        this.getPartialsData(this.farmerid);
-        this.getSize(this.farmerid);
-        this.getHarvesters(this.farmerid);
-        this.getRewards();
-      });
-      this.dataService.getStats().subscribe(data => {
-        this.xch_current_price_usd = data['xch_current_price']['usd'];
-        this.xch_tb_month = data['xch_tb_month'];
-      })
+    this.dataService.getLauncher(this.farmerid).subscribe(launcher => {
+      console.log('launcher', launcher)
+      this.farmer = launcher;
+      this.getPartialsData(this.farmerid);
+      this.getSize(this.farmerid);
+      this.getHarvesters(this.farmerid);
+      this.getRewards();
     });
   }
 
@@ -246,6 +237,7 @@ export class PartialsComponent implements OnInit {
 
     var obs = new Observable(subscriber => {
       this.dataService.getPartials(launcher_id).subscribe((data) => {
+        console.log('daaaata', data)
         this.partialsCollectionSize = data['count'];
         this._handlePartial(subscriber, data, successes, errors, hours);
       });

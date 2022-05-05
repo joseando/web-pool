@@ -131,7 +131,7 @@ export class FarmerComponent implements OnInit {
       var hour = Math.floor(v['timestamp'] / 3600) * 3600;
       hours.add(hour);
 
-      if(v.error === null) {
+      if (v.error === null) {
         this.partialsSuccessful++;
         this.partialsPoints += v['difficulty'];
         errors.set(hour, (errors.get(hour) || 0))
@@ -144,7 +144,7 @@ export class FarmerComponent implements OnInit {
 
     });
 
-    if(data['next']) {
+    if (data['next']) {
       this.dataService.getNext(data['next']).subscribe(
         (data) => { this._handlePartial(subscriber, data, successes, errors, hours); }
       );
@@ -227,7 +227,7 @@ export class FarmerComponent implements OnInit {
   }
 
   filterPartials() {
-    if(this.failedPartials) {
+    if (this.failedPartials) {
       this.partialsFiltered = this.partialsTable.filter(entry => entry.error !== null)
     } else {
       this.partialsFiltered = [...this.partialsTable];
@@ -285,7 +285,7 @@ export class FarmerComponent implements OnInit {
       (<any[]>d).forEach(i => {
 
         var harvester = this.perHarvesterData.get(i['harvester']);
-        if(!harvester) {
+        if (!harvester) {
           harvester = {
             'points_total': 0,
             'partials_failed': 0,
@@ -303,11 +303,11 @@ export class FarmerComponent implements OnInit {
           };
           this.perHarvesterData.set(i['harvester'], harvester);
         }
-        if(i['result'] == 'count') {
+        if (i['result'] == 'count') {
           var date = new Date(i['datetime']);
           var hour = Math.floor(date.getTime() / (3600 * 1000)) * 3600;
           xTicks.add(hour);
-          if(i['error']) {
+          if (i['error']) {
             harvester['data'][1]['series'].push({ 'name': date, 'value': i['value'], 'label': $localize`Failed Partials` + ': ' + i['value'] });
             harvester['partials_failed'] += i['value'];
           } else {
@@ -315,7 +315,7 @@ export class FarmerComponent implements OnInit {
             harvester['partials_success'] += i['value'];
           }
         } else {
-          if(!i['error']) {
+          if (!i['error']) {
             harvester['points_total'] += i['value'];
           }
         }
@@ -338,9 +338,9 @@ export class FarmerComponent implements OnInit {
       ];
       (<any[]>r).map((i) => {
         var where: any[];
-        if(i['field'] == 'size') {
+        if (i['field'] == 'size') {
           where = this.sizeData[0];
-        } else if(i['field'] == 'size_8h') {
+        } else if (i['field'] == 'size_8h') {
           where = this.sizeData[1];
         }
         where['series'].push({

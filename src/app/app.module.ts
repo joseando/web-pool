@@ -26,6 +26,11 @@ import { GiveawayComponent } from './giveaway/giveaway.component';
 import { CalculatorComponent } from './calculator/calculator.component';
 import { PartialsComponent } from './partials/partials.component';
 import { NgxFilesizeModule } from 'ngx-filesize';
+import { SpaceComponent } from './space/space.component';
+import { BlocksComponent } from './blocks/blocks.component';
+import { PaymentsComponent } from './payments/payments.component';
+import { RewardsComponent } from './rewards/rewards.component';
+import { HarvestersComponent } from './harvesters/harvesters.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +47,11 @@ import { NgxFilesizeModule } from 'ngx-filesize';
     GiveawayComponent,
     CalculatorComponent,
     PartialsComponent,
+    SpaceComponent,
+    BlocksComponent,
+    PaymentsComponent,
+    RewardsComponent,
+    HarvestersComponent,
   ],
   imports: [
     BrowserModule,
