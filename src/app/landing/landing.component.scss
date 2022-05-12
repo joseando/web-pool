@@ -122,6 +122,13 @@ section {
     border-bottom-right-radius: 15px;
 }
 
+.offline-text {
+    color: rgb(255, 0, 0);
+    font-weight: bolder;
+}
+
+.wallet-title-address {}
+
 @media only screen and (max-width: 690px) {
     .join-main-container-inner {
         display: flex;

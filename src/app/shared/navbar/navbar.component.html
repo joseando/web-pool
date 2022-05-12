@@ -70,8 +70,36 @@
       </ul>
 
       <ul class="navbar-nav navbar-nav-hover align-items-lg-center ml-lg-auto">
+        <li class="nav-item">
+          <a class="nav-link nav-link-icon" href="https://www.youtube.com/channel/UC6bOGocw1dXhJHQ8JAxncHA"
+            target="_blank" data-toggle="tooltip" title="Visita el canal">
+            <i class="fab fa-youtube youtube-icon"></i>
+            <span class="nav-link-inner--text d-lg-none  ">YouTube</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-icon" href="https://discord.gg/2vGvtZhRrT" target="_blank" data-toggle="tooltip"
+            title="Conoce nuestra comunidad">
+            <i class="fab fa-discord discord-icon"></i>
+            <span class="nav-link-inner--text d-lg-none">Discord</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-icon" href="https://twitter.com/Joseando16" target="_blank" data-toggle="tooltip"
+            title="Sigueme en Twitter">
+            <i class="fab fa-twitter twitter-icon "></i>
+            <span class="nav-link-inner--text d-lg-none">Twitter</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-icon" href="https://www.reddit.com/user/joseando_net/" target="_blank"
+            data-toggle="tooltip" title="Sigueme en Reddit">
+            <i class="fa-brands fa-reddit-alien redit-icon"></i>
+            <span class="nav-link-inner--text d-lg-none">Reddit</span>
+          </a>
+        </li>
         <li class="nav-item d-none d-lg-block ml-lg-4" *ngIf="isNavbarVisible" (click)="onLogout()">
-          <a class="login-btn btn btn-neutral btn-icon" [routerLink]="['/']">
+          <a class="login-btn btn btn-neutral btn-icon logout-btn" [routerLink]="['/']">
             <span class="nav-link-inner--text-login" i18n="@@JoinPool">Cerrar sesión</span>
           </a>
         </li>

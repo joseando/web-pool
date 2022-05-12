@@ -29,7 +29,6 @@ export class LandingComponent implements OnInit, OnDestroy {
   netspace: number = 0;
   poolLog: string = '';
   xch_current_price: number = 0;
-  pool_wallets: Array<any> = new Array();
   current_effort: number = 0;
   time_since_last_win: string = '';
   xch_tb_month: number = 0;
@@ -56,6 +55,9 @@ export class LandingComponent implements OnInit, OnDestroy {
   payoutsCollectionSize: number = 0;
   payoutsPage: number = 1;
   payoutsPageSize: number = 10;
+
+  pool_wallets: Array<any> = new Array();
+
 
   constructor(private dataService: DataService, private authSvc: AuthenticationService) {
     this.blocks$ = this._blocks$.asObservable();
@@ -143,7 +145,6 @@ export class LandingComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    console.log('lanmding destroyed')
     this.authtSubscription.unsubscribe()
   }
 
