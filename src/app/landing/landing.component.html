@@ -262,7 +262,7 @@
 
   <section class="section section-sm pt-lg-0" *ngIf="true">
     <div class="container">
-      <h3 class="display-3 title-text" i18n="@@PoolWallets">Pool Wallets</h3>
+      <h3 class="display-3 title-text" i18n="@@PoolWallets">Wallets de la pool</h3>
       <div class="row justify-content-center">
         <div class="col-lg-12">
           <div *ngIf="pool_wallets.length == 0" class="row row-grid text-center">
@@ -274,29 +274,27 @@
               </div>
             </div>
           </div>
-          <div *ngFor="let wallet of pool_wallets; let i = index" class="row row-grid text-center">
+          <div class="row row-grid text-center">
             <div class="col-lg-9">
               <div class="card card-lift shadow border-0 box-container">
                 <div class="card-body py-3 box-container">
-                  <div class="pool-wallet-banner wallet-title-address "><span i18n="@@Address">Dirección</span> #{{ i +
-                    1
-                    }}</div>
+                  <div class="pool-wallet-banner wallet-title-address "><span i18n="@@Address">Pagos</span></div>
                   <p class="pool-wallet-description description mt-3">
                     <a href="https://www.spacescan.io/xch/address/{{ wallet.address }}" target="_blank">
-                      {{ wallet.address }}
+                      xch18cs70hkkxe4pt2q22qkmvuk9dfpym5dxp5x33hrmpyaw6wy6u9nsd4z50q
                     </a>
                   </p>
                 </div>
               </div>
             </div>
-            <div class="col-lg-3">
-              <div class="card card-lift shadow border-0 box-container">
+            <div class="col-lg-9 ">
+              <div class="card card-lift shadow border-0 box-container wallet-container">
                 <div class="card-body py-3 box-container">
-                  <div *ngIf="wallet.synced" class="pool-wallet-banner wallet-title-address" i18n>Synced</div>
-                  <div *ngIf="!wallet.synced" class="pool-wallet-banner-error" i18n>Not synced!</div>
-                  <p class="pool-wallet-description description mt-3"
-                    ngbTooltip="{{ wallet.balance.confirmed_wallet_balance }} Mojos">
-                    {{ wallet.balance.confirmed_wallet_balance / 1000000000000 | number:'1.2' }} XCH
+                  <div class="pool-wallet-banner wallet-title-address "><span i18n="@@Address">Fees</span></div>
+                  <p class="pool-wallet-description description mt-3">
+                    <a href="https://www.spacescan.io/xch/address/{{ wallet.address }}" target="_blank">
+                      xch1qp7385zccgxzpf22rg4udu844enwek6ha5x9pa8qqrkkzn5twz9q8eqn83
+                    </a>
                   </p>
                 </div>
               </div>

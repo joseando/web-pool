@@ -127,7 +127,9 @@ section {
     font-weight: bolder;
 }
 
-.wallet-title-address {}
+.wallet-container {
+    margin-top: 30px;
+}
 
 @media only screen and (max-width: 690px) {
     .join-main-container-inner {
