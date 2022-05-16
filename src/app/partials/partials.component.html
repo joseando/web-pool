@@ -128,7 +128,7 @@
 
             <!-- Partials -->
             <li [ngbNavItem]="1">
-                <a ngbNavLink><i class="fa fa-industry"></i>&nbsp;<span i18n="@@Partials">Parcelas</span></a>
+                <a ngbNavLink><i class="fa fa-industry"></i>&nbsp;<span i18n="@@Partials">Parciales</span></a>
                 <ng-template ngbNavContent>
                     <div class="row justify-content-center">
                         <ngx-charts-area-chart [scheme]="partialsChartColors" [legend]="false" [showXAxisLabel]="false"
@@ -146,7 +146,7 @@
                                     <div class="card card-lift shadow border-0 box-container">
                                         <div class="card-body py-3 text-center text-uppercase box-container">
                                             <span class="text-primary"><span i18n="@@Partials"
-                                                    class="box-text-title">Parcelas</span><br />(<span i18n="@@Hrs24"
+                                                    class="box-text-title">Parciales</span><br />(<span i18n="@@Hrs24"
                                                     class="box-text-title">24
                                                     horas</span>)</span>
                                             <p class="display-3">{{ partialsCollectionSize }}</p>
@@ -168,7 +168,7 @@
                                     <div class="card card-lift shadow border-0 box-container">
                                         <div class="card-body py-3 text-center text-uppercase box-container">
                                             <span class="text-primary"><span i18n="@@SuccessfulPartials_preline"
-                                                    style="word-spacing: 300px" class="box-text-title">Parcelas
+                                                    style="word-spacing: 300px" class="box-text-title">Parciales
                                                     exitosas</span></span>
                                             <p class="display-3">{{ partialsSuccessful }}</p>
                                         </div>
@@ -178,7 +178,8 @@
                                     <div class="card card-lift shadow border-0 box-container">
                                         <div class="card-body py-3 text-center text-uppercase box-container">
                                             <span class="text-warning box-text-title"><span
-                                                    i18n="@@FailedPartials_preline" style="word-spacing: 300px">Parcelas
+                                                    i18n="@@FailedPartials_preline"
+                                                    style="word-spacing: 300px">Parciales
                                                     fallidas</span></span>
                                             <p class="display-3">{{ partialsFailed }}</p>
                                         </div>
@@ -189,7 +190,7 @@
                                         <div class="card-body py-3 text-center text-uppercase box-container">
                                             <span class="text-info box-text-title"><span i18n="@@Partials"
                                                     class="box-text-title">Desempeño</span><br /><span
-                                                    i18n="@@Performance">de parcelas</span></span>
+                                                    i18n="@@Performance">de parciales</span></span>
                                             <p class="display-3"
                                                 ngbTooltip="{{ 100 - ( partialsFailed * 100 / partialsSuccessful ) | number:'2.6' }}%">
                                                 {{ 100 -

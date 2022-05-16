@@ -66,7 +66,6 @@ export class LandingComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    console.log('value landing', this.isUserAuthenticated)
     this.authtSubscription = this.authSvc.getAuthentication().subscribe(value => {
       this.isUserAuthenticated = value
     })
@@ -96,7 +95,6 @@ export class LandingComponent implements OnInit, OnDestroy {
   }
 
   searchFarmer() {
-    this.authSvc.changeAuthentication(true)
     this.searchNotFound = false;
     this.farmersPage = 1;
     this.dataService.getLaunchers({
@@ -105,7 +103,8 @@ export class LandingComponent implements OnInit, OnDestroy {
       offset: (this.farmersPage - 1) * this.farmersPageSize
     }).subscribe(res => {
       if (res['results']) {
-
+        console.log('res', res)
+        this.authSvc.changeAuthentication(true)
       }
     });
   }
