@@ -27,6 +27,4 @@ export class AuthenticationService {
     }
     localStorage.removeItem('test')
   }
-
-
 }

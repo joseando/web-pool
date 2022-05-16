@@ -11,7 +11,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 })
 export class NavbarComponent implements OnInit {
 
-    public isNavbarVisible = false
+    public isNavbarVisible = this.authSvc.isUserAuth()
     number: any
     public isCollapsed = true;
     private lastPoppedUrl: string;
